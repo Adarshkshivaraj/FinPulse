@@ -1,0 +1,19 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Reset Password</h2>
+    <form [formGroup]="resetForm" (ngSubmit)="onForgotSubmit()">
+      <input type="text" placeholder="Username or Email" formControlName="username"
+        [class.input-error]="isSubmitted && resetForm.controls['username'].invalid" />
+      <input type="password" placeholder="New Password" formControlName="newPassword"
+        [class.input-error]="isSubmitted && resetForm.controls['newPassword'].invalid" />
+      <input type="password" placeholder="Confirm New Password" formControlName="confirmPassword"
+        [class.input-error]="isSubmitted && resetForm.controls['confirmPassword'].invalid" />
+
+      <button type="submit" (click)="onForgotSubmit()">Reset Password</button>
+    </form>
+
+    <div class="actions">
+      <button (click)="goToLogin()">Back</button>
+    </div>
+  </div>
+</div>

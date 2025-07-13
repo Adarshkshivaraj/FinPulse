@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Create Account</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+      <input type="text" placeholder="Full Name" formControlName="LoginName"
+        [class.input-error]="isSubmitted && registerForm.controls['LoginName'].invalid" />
+      <input type="email" placeholder="Email" formControlName="email"
+        [class.input-error]="isSubmitted && registerForm.controls['email'].invalid" />
+      <input type="password" placeholder="Password" formControlName="password"
+        [class.input-error]="isSubmitted && registerForm.controls['password'].invalid" />
+      <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+      <input type="text" placeholder="Mobile Number" formControlName="mobileNumber"
+        [class.input-error]="isSubmitted && registerForm.controls['mobileNumber'].invalid" />
+
+      <div *ngIf="showOtpField" class="otp-section">
+        <label class="otp-label">Enter OTP</label>
+        <ng-otp-input [config]="otpConfig" (onInputChange)="onOtpChange($event)"></ng-otp-input>
+        <div *ngIf="otpError" class="error-text">Invalid OTP. Please try again.</div>
+      </div>
+
+      <button type="submit" class="submit-btn">Verify & Register</button>
+    </form>
+
+    <div class="actions">
+      <button class="back-btn" (click)="goToLogin()">Back</button>
+    </div>
+  </div>
+</div>

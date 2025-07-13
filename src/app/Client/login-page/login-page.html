@@ -1,0 +1,16 @@
+<div class="login-container">
+  <div class="login-card">
+    <h2>Welcome Back</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <input type="text" placeholder="Username or Email" formControlName="username"
+      [class.input-error]="isSubmitted && loginForm.controls['username'].invalid" />
+      <input type="password" placeholder="Password" formControlName="password"
+      [class.input-error]="isSubmitted && loginForm.controls['password'].invalid" />
+      <button type="submit">Login</button>
+    </form>
+    <div class="actions">
+      <button (click)="goToResetPage()">Forgot Password?</button>
+      <button (click)="goToRegister()">Register</button>
+    </div>
+  </div>
+</div>

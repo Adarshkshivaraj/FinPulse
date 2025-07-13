@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  Welcome, {{ userName }} 👋
+</mat-toolbar>
+
+<div class="summary-grid">
+  <mat-card *ngFor="let card of summaryCards">
+    <mat-card-title>{{ card.title }}</mat-card-title>
+    <mat-card-content>
+      <h2>{{ card.value | currency:'INR' }}</h2>
+    </mat-card-content>
+  </mat-card>
+</div>

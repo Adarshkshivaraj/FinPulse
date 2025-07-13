@@ -1,0 +1,42 @@
+.layout-container {
+  height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #6c6ca2;
+  color: white;
+
+  mat-toolbar {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  a.mat-list-item {
+    color: white;
+    gap: 10px;
+
+    &.active {
+      background-color: #00e676;
+      color: #5b5ba6;
+    }
+
+    mat-icon {
+      color: #00e676;
+    }
+  }
+}
+
+.main-content {
+  padding: 24px;
+  background-color: #f5f7fa;
+}
+
+.active-link {
+  background-color: #656169;
+  color: #1e1e2f;
+
+  mat-icon {
+    color: #1e1e2f;
+  }
+}

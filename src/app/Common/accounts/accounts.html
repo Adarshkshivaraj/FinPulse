@@ -1,0 +1,12 @@
+<main class="page-container">
+  <h1>Accounts Overview</h1>
+  <section class="account-cards">
+    <mat-card *ngFor="let account of accounts">
+      <mat-card-title>{{ account.name }}</mat-card-title>
+      <mat-card-content>
+        <p>Balance: {{ account.balance | currency:'INR' }}</p>
+        <p>Type: {{ account.type }}</p>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</main>
