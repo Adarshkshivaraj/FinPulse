@@ -8,7 +8,8 @@
         [class.input-error]="isSubmitted && registerForm.controls['email'].invalid" />
       <input type="password" placeholder="Password" formControlName="password"
         [class.input-error]="isSubmitted && registerForm.controls['password'].invalid" />
-      <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+      <input type="password" placeholder="Confirm Password" formControlName="confirmPassword"
+        [class.input-error]="isSubmitted && registerForm.controls['password'].invalid" />
       <input type="text" placeholder="Mobile Number" formControlName="mobileNumber"
         [class.input-error]="isSubmitted && registerForm.controls['mobileNumber'].invalid" />
 

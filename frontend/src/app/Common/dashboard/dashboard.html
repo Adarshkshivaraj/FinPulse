@@ -3,10 +3,36 @@
 </mat-toolbar>
 
 <div class="summary-grid">
-  <mat-card *ngFor="let card of summaryCards">
+  <mat-card *ngFor="let card of summaryCards" class="summary-card mat-elevation-z4">
     <mat-card-title>{{ card.title }}</mat-card-title>
     <mat-card-content>
       <h2>{{ card.value | currency:'INR' }}</h2>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<div class="charts-grid">
+  <!-- Pie Chart -->
+  <mat-card>
+    <mat-card-title>Expenses Breakdown</mat-card-title>
+    <mat-card-content>
+      <canvas baseChart
+        [data]="expenseChartData"
+        [labels]="expenseChartLabels"
+        [chartType]="'pie'">
+      </canvas>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Line Chart -->
+  <mat-card>
+    <mat-card-title>Monthly Expense Trend</mat-card-title>
+    <mat-card-content>
+      <canvas baseChart
+        [datasets]="trendChartData"
+        [labels]="trendChartLabels"
+        [chartType]="'line'">
+      </canvas>
     </mat-card-content>
   </mat-card>
 </div>

@@ -19,7 +19,7 @@ export const routes: Routes = [
     component: HomePage, // This is your layout with sidebar
     canActivate: [AuthGuard],
     children: [
-      { path: 'dashboard', component: Dashboard },
+      { path: 'dashboard', component: Dashboard, canActivate: [AuthGuard] },
       { path: 'transactions', component: Transaction },
       { path: 'accounts', component: Accounts },
       { path: 'settings', component: Settings },

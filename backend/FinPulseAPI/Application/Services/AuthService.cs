@@ -19,7 +19,7 @@ namespace FinPulseAPI.Application.Services
 
         public async Task<AuthResponse> LoginAsync(DTOs.LoginRequest request)
         {
-            var user = await _repo.FindByEmailAsync(request.Email);
+            var user = await _repo.FindByEmailAsync(request.Email, request.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
                 throw new UnauthorizedAccessException("Invalid credentials");
 

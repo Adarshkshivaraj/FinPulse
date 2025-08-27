@@ -7,8 +7,6 @@ import { AuthService } from '../../Servies/auth.service';
 import { HttpClient } from '@angular/common/http';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
-import { fromEvent } from 'rxjs';
-
 
 @Component({
   selector: 'app-register-page',

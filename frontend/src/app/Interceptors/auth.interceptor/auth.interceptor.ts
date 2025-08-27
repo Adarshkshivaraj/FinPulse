@@ -1,5 +1,4 @@
-// src/app/interceptors/auth.interceptor.ts
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import {
   HttpInterceptor,
   HttpRequest,
@@ -8,22 +7,29 @@ import {
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('authToken');
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
-    const authReq = token
-      ? req.clone({ setHeaders: { Authorization: `Bearer ${token}` } })
-      : req;
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let authReq = req;
+
+    if (isPlatformBrowser(this.platformId)) {
+      const token = localStorage.getItem('authToken');
+      if (token) {
+        authReq = req.clone({
+          setHeaders: { Authorization: `Bearer ${token}` }
+        });
+      }
+    }
 
     return next.handle(authReq).pipe(
       catchError(error => {
-        if (error.status === 401) {
-          // Token invalid or expired, redirect to login
+        if (isPlatformBrowser(this.platformId) && error.status === 401) {
           localStorage.removeItem('authToken');
-          window.location.href = '/login'; // or use router
+          window.location.href = '/login';
         }
         return throwError(() => error);
       })

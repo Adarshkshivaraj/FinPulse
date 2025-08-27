@@ -8,6 +8,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -19,4 +21,10 @@ import { RouterModule } from '@angular/router';
 })
 export class HomePage {
   userName = 'Adarsh';
+  constructor(private router: Router) {
+  }
+
+  onLogout() {
+    this.router.navigate(['/login']);
+  }
 }
